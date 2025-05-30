@@ -1,0 +1,48 @@
+1. 주제 
+- 부산광역시 지번 주소 및 일별 기상 데이터를 활용한 일 단위 119신고 건수 예측
+- 기상 변수를 활용하여 119신고 건수 예측 향상 아이디어 제시
+
+중요 내용 : 지번 주소/ 일별 / 시간대
+
+2. 추가할 데이터
+
+
+3. 변수 선택
+
+
+예측 <- AutoML
+해석 <- linear/logistic -> random 포레스트(선형가정 검증) -> 
+
+
+의논
+- 소방 + 날씨 데이터를 어떻게 융합할지 
+- 공유 코드 git 여부
+
+
+
+5.  피처 엔지니어링
+is_weekend, is_rainy_day, hot_day, cold_day 등 파생 피처 생성 <- hot만 사용해도 되지 않을까.. 5~10월이므로..
+
+
+이동 평균, lag 값 등 시계열 정보 포함 (예: 전날 신고 수 등)
+
+ 피처 엔지니어링
+is_weekend, is_rainy_day, hot_day, cold_day 등 파생 피처 생성
+
+이동 평균, lag 값 등 시계열 정보 포함 (예: 전날 신고 수 등)
+
+ 피처 엔지니어링
+is_weekend, is_rainy_day, hot_day, cold_day 등 파생 피처 생성
+
+이동 평균, lag 값 등 시계열 정보 포함 (예: 전날 신고 수 등)
+
+6. 모델링 (예측)
+🔹 회귀 모델 (선형 회귀, 랜덤포레스트, XGBoost)
+타겟: call_count (숫자 예측)
+
+🔹 분류 모델 (로지스틱 회귀, LightGBM)
+타겟: high_demand = 1 if call_count > threshold
+
+🔹 시계열 모델 (옵션)
+ARIMA, Prophet, LSTM 등 → 특정 지역의 call_count 시계열 예측
+
